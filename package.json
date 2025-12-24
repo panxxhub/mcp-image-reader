@@ -1,0 +1,24 @@
+{
+  "name": "mcp-image-reader",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "An MCP server that reads images using OpenAI-compatible vision APIs",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.9.0",
+    "dotenv": "^16.4.5",
+    "openai": "^4.73.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

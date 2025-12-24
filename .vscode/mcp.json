@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "mcp-image-reader": {
+      "command": "npm",
+      "args": ["run", "-s", "dev"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "OPENAI_API_KEY": "${env:OPENAI_API_KEY}",
+        "OPENAI_BASE_URL": "${env:OPENAI_BASE_URL}",
+        "OPENAI_MODEL": "${env:OPENAI_MODEL}"
+      }
+    }
+  }
+}
