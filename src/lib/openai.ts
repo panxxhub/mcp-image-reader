@@ -3,7 +3,11 @@ import OpenAI from "openai";
 export type VisionDetail = "low" | "high";
 
 export async function describeImageWithOpenAICompatible(opts: {
-  dataUrl: string;
+  /**
+   * A URL understood by the OpenAI-compatible API.
+   * Can be a remote http(s) URL or a data URL (data:<mime>;base64,...).
+   */
+  imageUrl: string;
   prompt?: string;
   detail?: VisionDetail;
 }): Promise<string> {
@@ -34,7 +38,7 @@ export async function describeImageWithOpenAICompatible(opts: {
           {
             type: "image_url",
             image_url: {
-              url: opts.dataUrl,
+              url: opts.imageUrl,
               ...(opts.detail ? { detail: opts.detail } : {}),
             },
           },

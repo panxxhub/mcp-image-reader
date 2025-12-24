@@ -2,6 +2,7 @@
 .env
 
 # Node / TypeScript
+package-lock.json
 node_modules/
 dist/
 *.tsbuildinfo

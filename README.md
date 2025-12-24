@@ -4,9 +4,12 @@ An **MCP server** that can **read/understand images** by calling an **OpenAI-com
 
 ## What you get
 
-- MCP tool: `read_image`
-  - Input: `imagePath` (local file path) **or** `imageBase64` (base64/data URL)
-  - Output: model-generated text (description / OCR / whatever your prompt asks)
+- MCP tools:
+  - `help` — show usage + environment variables
+  - `describe_image` — quick scene description (agent-friendly)
+  - `ocr_image` — text extraction (plain text or JSON)
+  - `extract_receipt` — best-effort receipt parsing into JSON
+  - `read_image` — custom prompt for anything else
 
 ## Setup
 
@@ -81,6 +84,10 @@ Example arguments:
   - `imagePath`: `./examples/cat.png`
   - `prompt`: `"Describe what's in the image and list any text you see."`
 
+- From URL:
+  - `imageUrl`: `"https://example.com/image.png"`
+  - Optional: `urlMode`: `"direct"` (default) or `"download"`
+
 - From base64:
   - `imageBase64`: `"iVBORw0KGgoAAA..."` (or a full `data:image/png;base64,...` URL)
 
@@ -88,4 +95,13 @@ Example arguments:
 
 - Default model: `gpt-4o-mini` (override with `OPENAI_MODEL`)
 - Default base URL: OpenAI SDK default (override with `OPENAI_BASE_URL`)
+
+### Image URLs
+
+If you pass `imageUrl`, by default the server sends it directly to the model provider. If your provider cannot fetch remote URLs, set `urlMode: "download"` to have the server download the image and convert it into a data URL first.
+
+## Agent-friendliness
+
+Tool descriptions and per-parameter documentation are exposed through MCP metadata.
+In VS Code (and other MCP clients), you should see the tool list with descriptions.
 
